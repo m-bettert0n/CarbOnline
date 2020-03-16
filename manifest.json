@@ -3,7 +3,7 @@
   "name": "CarbOnline FootPrint",
   "description": "Track your browsers carbon footprint",
   "version": "1.0",
-  "permissions": ["activeTab","declarativeContent","storage", "history", "webRequest", "tabs", "webRequestBlocking", "<all_urls>"],
+  "permissions": ["activeTab","declarativeContent","storage", "history", "webRequest", "tabs", "webRequestBlocking", "<all_urls>", "unlimitedStorage"],
   "background":{
     "scripts": ["background.js"],
     "persistent": true

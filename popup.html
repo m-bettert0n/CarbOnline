@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
       body{
         margin: 5px;
-        width: 120px;
+        min-width: 240px;
         font-size: 15px;
         text-align: center;
         color: green;
-        border: 3px;
+        border: 3px, #137547;
+      }
+      .btn {
+        background-color: #3FA34D;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <p>Your C02 output has reached a total of: </p>
     <h5 id='carbon'></h5>
-    <p>This many trees can absorb this amount of Carbon in a single day:</p>
-    <h5 id='trees'></h5>
-    <p>A light bulb can stay alight for this many hours with the same amount of energy:</p>
-    <h5 id='light'></h5>
-    <p>An electric car can travel this far with the same amount of energy</p>
-    <h5 id='car'></h5>
-    <p>Enough energy to heat this many cups of coffee:</p>
-    <h5 id='coffee'></h5>
+    <button class="btn" id="treeBtn"><i class="fa fa-tree"></i></button>
+
+    <button class="btn" id="lightBtn"><i class="fa fa-home"></i></button>
+    <!-- <h5 id='light'></h5> -->
+    <button class="btn" id="carBtn"><i class="fa fa-car"></i></button>
+    <!-- <h5 id='car'></h5> -->
+    <button class="btn" id="coffeeBtn"><i class="fa fa-coffee"></i></button>
+    <!-- <h5 id='coffee'></h5> -->
     <script src="popup.js"></script>
   </body>
 </html>

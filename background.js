@@ -27,7 +27,7 @@
 
   //save carbon value on the storage API
   calculateTree(totalCarbon)
-  chrome.storage.sync.set({'carbonOutput': totalCarbon})
+  chrome.storage.local.set({'carbonOutput': totalCarbon})
 }
 
 
@@ -58,26 +58,26 @@ function sumBytes(bytes){
 function calculateTree(carbon){
   const C_PER_TREE_DAY = 55;
   const numOfTrees = Math.round(carbon/C_PER_TREE_DAY)
-  chrome.storage.sync.set({'trees': numOfTrees});
+  chrome.storage.local.set({'trees': numOfTrees});
 }
 
 // function to show the number of hours a lightbulb would be alight for with this amount of energy
 function calculateLight(energy){
   const NRG_LIGHT_HR = 0.06;
   const numOfHours = Math.round(energy/NRG_LIGHT_HR)
-  chrome.storage.sync.set({'hours': numOfHours});
+  chrome.storage.local.set({'hours': numOfHours});
 }
 
 // function to show the number of miles an electric car would travel with this amount of energy
 function calculateCar(energy){
   const KWH_PER_MILE = 3;
   const numOfMiles = Math.round(energy/KWH_PER_MILE)
-  chrome.storage.sync.set({'miles': numOfMiles});
+  chrome.storage.local.set({'miles': numOfMiles});
 }
 
 // function to show the number of coffees that could be made with this amount of energy
 function calculateCoffee(energy){
   const NRG_PER_COFFEE = 0.0156 ;
   const numOfCoffees = Math.round(energy/NRG_PER_COFFEE)
-  chrome.storage.sync.set({'coffee': numOfCoffees});
+  chrome.storage.local.set({'coffee': numOfCoffees});
 }
