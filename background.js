@@ -24,7 +24,6 @@
   //save carbon value on the storage API
 
   chrome.storage.sync.set({'carbonOutput': totalCarbon}, function(){
-    console.log('value is set to', totalCarbon)
   });
 }
 
@@ -32,6 +31,7 @@
  // calculate some of all web request data
 function sumBytes(bytes){
   totalBytes += bytes;
+  console.log(bytes)
   calculateCarbon(totalBytes);
 }
 
