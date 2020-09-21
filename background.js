@@ -1,6 +1,7 @@
 
  // Initialize data count
  let totalBytes = 0;
+ let websites = {};
 
  //Set Values for CO2 Calculations
  const KWG_PER_GB = 1.805;
@@ -18,35 +19,73 @@
  function calculateCarbon(totalBytes){
   // first, calculate energy intensity (in KwH) of web data
   const energy = totalBytes * (KWG_PER_GB/B_PER_GB)
-  calculateCoffee(energy)
-  calculateCar(energy)
-  calculateLight(energy)
 
-  // carbon intensity of electricity used
-  const totalCarbon = energy * CARBON_PER_KWG_GRID
+   // carbon intensity of electricity used
+   const totalCarbon = energy * CARBON_PER_KWG_GRID
+
+
+    calculateCoffee(energy)
+    calculateCar(energy)
+    calculateLight(energy)
+    calculateTree(totalCarbon)
 
   //save carbon value on the storage API
-  calculateTree(totalCarbon)
   chrome.storage.local.set({'carbonOutput': totalCarbon})
+
+  return totalCarbon
 }
 
 
  // calculate some of all web request data
-function sumBytes(bytes){
+function sumBytes(bytes, origin){
+
+  let carbon = calculateCarbon(bytes)
+  logWebsite(origin, carbon);
+
   totalBytes += bytes;
   calculateCarbon(totalBytes);
+}
 
+
+function logWebsite(origin, carbon){
+  let website = getBaseUrl(origin);
+
+  if(!websites[website]){
+    websites[website] = carbon;
+  }
+  else{
+    let newTotal = websites[website] + carbon;
+    websites[website] = newTotal;
+  }
+  chrome.storage.local.set(websites)
+}
+
+
+/**
+  Utility function that takes a url
+  Creates a temporary element in the DOM for the purpose of extracting a clean base url
+  Strips out `www` using regex.
+  @param {string} url
+  @returns {string}
+ */
+function getBaseUrl(url) {
+  let temp = document.createElement("a");
+  temp.href = url;
+  let baseUrl = temp.origin.replace(/www.(?!^https?:\/\/)/, "");
+  return baseUrl;
 }
 
 //listens to every http request and finds the content-length property of each
  chrome.webRequest.onHeadersReceived.addListener(function(details){
-
       if(details.responseHeaders){
-      const headers = details.responseHeaders;
-      const contentlengthObj = headers.filter(header => header.name === 'content-length')
-      const contentBytes = contentlengthObj[0].value
-      const bytes = Number(contentBytes)
-          sumBytes(bytes);
+        const origin = details.initiator;
+        const headers = details.responseHeaders;
+        const contentlengthObj = headers.filter(header => header.name === 'content-length')
+        if(contentlengthObj[0]){
+          const contentBytes = contentlengthObj[0].value
+          const bytes = Number(contentBytes)
+          sumBytes(bytes, origin);
+        }
       }
     },
     {
