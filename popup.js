@@ -66,3 +66,9 @@ coffeeBtn.addEventListener("click", function(){
     else coffee.innerHTML = `Energy to boil water for ${num} cups of coffee`
   });
 })
+
+// link to website from popup
+let link = document.getElementById("website");
+link.onclick = function () {
+  chrome.tabs.create({active: true, url: "https://carbonline.netlify.app/"});
+};
