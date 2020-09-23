@@ -1,0 +1,15 @@
+#main-content{
+  background-color: #d8f3dc;
+}
+
+#tooltip {
+  position: absolute;
+  text-align: left;
+  padding: 6px;
+  font: 18px sans-serif;
+  font-weight: bold;
+  background: white;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}

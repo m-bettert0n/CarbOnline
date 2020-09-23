@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>CarbOnline Chart</title>
-<link rel="stylesheet" type="text/css" href="./inspector.css">
-<body>
-<script type="module">
-
-import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
-
-const runtime = new Runtime();
-const main = runtime.module(define, Inspector.into(document.body));
-
-</script>
+<html>
+  <head>
+    <title>Carb-Online</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id='main-content'></div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
