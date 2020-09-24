@@ -1,8 +1,25 @@
 
-//let data = [0.6259008924243972, 0.05221024318598211, 0.000012775883078575134, 0.0005860936362296343]
-let data = [{url: 'youtube', co2: 12}, {url: 'google', co2: 2}, {url: 'pinterest', co2: 33}, {url: 'medium', co2: 12}]
-//let { websites } = require('./background');
 
+
+
+// Accesses localStorage and creates array of data for d3 visualization
+function allStorage() {
+  let data = [{url: 'youtube', co2: 12}, {url: 'google', co2: 2}, {url: 'pinterest', co2: 33}, {url: 'medium', co2: 12}]
+
+  let keys = Object.keys(localStorage);
+  let i = keys.length;
+
+  while ( i-- ) {
+    let url = keys[i];
+    let co2 = localStorage.getItem(keys[i])
+    let newItem = {'url': url, 'co2': co2}
+    data.push(newItem)
+  }
+
+  renderGraphView(data)
+}
+
+allStorage()
 
 
     function renderGraphView(nodes = []) {
@@ -100,4 +117,4 @@ let data = [{url: 'youtube', co2: 12}, {url: 'google', co2: 2}, {url: 'pinterest
       }
     }
 
-    renderGraphView(data)
+

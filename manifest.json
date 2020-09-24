@@ -16,5 +16,9 @@
   },
   "icons": {
     "128": "icon.png"
-  }
+  },
+  "content_scripts": [{
+    "matches": ["https://carbonline.netlify.app/"],
+    "js": ["content.js"]
+  }]
 }
