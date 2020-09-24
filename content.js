@@ -7,11 +7,11 @@ function moveData(){
       if(key.slice(0, 4) === str){
         let url = key
         let co2 = result[key]
+        co2 = co2.toFixed(2);
         localStorage.setItem(url, co2)
       }
     }
   })
-  console.log('completed adding to localStorage')
 }
 
 moveData();
