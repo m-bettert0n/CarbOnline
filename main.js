@@ -4,7 +4,7 @@
 
 // Accesses localStorage and creates array of data for d3 visualization
 function allStorage() {
-  let data = [{url: 'youtube', co2: 12}, {url: 'google', co2: 2}, {url: 'pinterest', co2: 33}, {url: 'medium', co2: 12}]
+  let data = []
 
   let keys = Object.keys(localStorage);
   let i = keys.length;
