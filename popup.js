@@ -3,6 +3,7 @@ let treeBtn = document.getElementById('treeBtn');
 let lightBtn = document.getElementById('lightBtn');
 let carBtn = document.getElementById('carBtn');
 let coffeeBtn = document.getElementById('coffeeBtn');
+let link = document.getElementById("website");
 
 chrome.storage.local.get('carbonOutput', function(data) {
   let num = data.carbonOutput.toFixed(2);
@@ -68,7 +69,6 @@ coffeeBtn.addEventListener("click", function(){
 })
 
 // link to website from popup
-let link = document.getElementById("website");
 link.onclick = function () {
   chrome.tabs.create({active: true, url: "https://carbonline.netlify.app/"});
 };
