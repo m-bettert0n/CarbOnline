@@ -63,12 +63,10 @@ function logWebsite(origin, carbon){
 }
 
 
-/**
+/*
   Utility function that takes a url
   Creates a temporary element in the DOM for the purpose of extracting a clean base url
   Strips out `www` using regex.
-  @param {string} url
-  @returns {string}
  */
 function getBaseUrl(url) {
   let temp = document.createElement("a");

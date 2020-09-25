@@ -1,7 +1,4 @@
 
-
-
-
 // Accesses localStorage and creates array of data for d3 visualization
 function allStorage() {
   let data = []
@@ -31,7 +28,6 @@ allStorage()
         .append("svg")
         .attr("height", height)
         .attr("width", width)
-        //.style("margin-top", "-84px");
 
       const tooltip = d3
         .select("#main-content")
@@ -50,7 +46,7 @@ allStorage()
       const linearScale = d3
         .scaleLinear()
         .domain([minDataPoint, maxDataPoint])
-        .range([8, 100]);
+        .range([8, 50]);
 
       let newScaledData = nodes.map(node => ({
         ...node,
